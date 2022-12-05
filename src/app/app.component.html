@@ -1,29 +1,5 @@
 <div class="row container mt-4">
-    <div class="col-3">
-        <h2>Búsquedas</h2>
-        <hr/>
-        <ul class="list-group">
-            <li class="list-group-item" 
-                routerLink=""
-                routerLinkActive="active"
-                [routerLinkActiveOptions] = "{ exact: true }"
-                role="button">
-                Por país
-            </li>
-            <li class="list-group-item"
-                routerLink="region"
-                routerLinkActive="active"
-                role="button">
-                Por región
-            </li>
-            <li class="list-group-item" 
-                routerLink="capital"
-                routerLinkActive="active"
-                role="button">
-                Por capital
-            </li>
-        </ul>
-    </div>
+    <app-sidebar class="col-3"></app-sidebar>
 
     <div class="col">
         <router-outlet></router-outlet>
