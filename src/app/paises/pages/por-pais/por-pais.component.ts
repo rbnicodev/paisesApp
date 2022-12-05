@@ -9,15 +9,20 @@ import { PaisService } from '../../services/pais.service';
 export class PorPaisComponent {
 
   termino: string = "hola Mundo";
+  error: boolean = false;
+  
 
   constructor( private paisService: PaisService ){}
 
   search() {
     console.log(this.termino);
+    this.error = false;
 
-    this.paisService.searchPais( this.termino ).subscribe( resp => {
+    this.paisService.searchPais( this.termino ).subscribe({ next: (resp) => {
       console.log(resp);
-    } );
+    }, error: (err) => {
+      this.error = true;
+    }});
 
   }
 }
