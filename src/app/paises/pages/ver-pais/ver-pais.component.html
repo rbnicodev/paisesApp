@@ -1,1 +1,65 @@
-<p>ver-pais works!</p>
+<div class="alert alert-info" *ngIf="!pais; else divPais">
+    Espere por favor...
+</div>
+
+<ng-template #divPais>
+    <div class="row">
+        <div class="col-12">
+            <h1>País: <small>{{ pais.name.common }}</small></h1>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-4">
+            <h3>Bandera</h3>
+            <img [src]="pais.flags.svg" class="img-thumbnail"/>
+        </div>
+
+        <div class="col">
+            <h3>Información</h3>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <strong>Población</strong> {{ pais.population | number }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Capital</strong> {{ pais.capital }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Región</strong> {{ pais.region }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Extensión</strong> {{ pais.area | number }} m2
+                </li>
+            </ul>
+            <hr>
+
+            <h5>Idiomas oficiales</h5>
+            <ul class="list-group mr-1">
+                <li class="list-group-item" *ngFor="let item of pais.languages | keyvalue">
+                    {{ item.value }}
+                </li>
+            </ul>
+            <hr>
+
+
+            <h5 class="mr-1">Traducciones</h5>
+            <div class="row">
+                <div class="col">
+                    <span class="badge bg-primary m-1" *ngFor="let item of pais.translations | keyvalue">
+                        {{ item.key }} : {{ item.value.common }}
+                    </span>
+                </div>
+            </div>
+            <div class="row mt-3 card">
+                <pre class="m-5">
+                    {{ pais | json }}
+                </pre>
+            </div>
+        </div>
+        
+    </div>
+
+
+    
+</ng-template>
