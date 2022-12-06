@@ -9,8 +9,8 @@ import { Country } from '../interfaces/pais.interface';
 export class PaisService {
 
   private name: string = '';
-  private accesKey: string = '?access_key=05257fda04d7389eb228cd1e6496b43e';
-  private apiUrl: string = 'http://api.countrylayer.com/v2'
+
+  private apiUrl: string = 'https://restcountries.com/v3.1'
 
   constructor( private http: HttpClient ) { 
 
@@ -18,7 +18,7 @@ export class PaisService {
   }
   
   searchPais( termino: string): Observable<Country[]> {
-      const url: string = `${ this.apiUrl }/name/${ termino }${ this.accesKey }`;
+      const url: string = `${ this.apiUrl }/name/${ termino }`;
 
       return this.http.get<Country[]>( url );
   }

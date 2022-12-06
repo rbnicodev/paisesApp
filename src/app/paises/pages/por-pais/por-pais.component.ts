@@ -25,6 +25,7 @@ export class PorPaisComponent {
       this.results = resp;
     }, error: (err) => {
       this.error = true;
+      this.results = [];
     }});
 
   }
