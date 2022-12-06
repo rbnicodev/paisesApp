@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { Country } from '../../interfaces/pais.interface';
 
 @Component({

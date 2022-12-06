@@ -34,4 +34,10 @@ export class PaisService {
 
     return this.http.get<Country[]>( url );
   }
+
+  verPais( termino: string): Observable<Country[]> {
+    const url: string = `${ this.apiUrl }/alpha/${ termino }`;
+
+    return this.http.get<Country[]>( url );
+  }
 }
