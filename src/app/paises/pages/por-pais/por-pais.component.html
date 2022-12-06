@@ -2,49 +2,17 @@
 <hr>
 
 <div class="row">
-    <div class="col">
-        <form autocomplete="off" (ngSubmit)="search() ">
-            <input type="text" 
-                name="termino" 
-                placeholder="Buscar País..." 
-                class="form-control"
-                [(ngModel)]="termino"/>
-        </form>
-    </div>
+    <app-input (onEnter) = "search( $event )"
+        (onDebounce)="sugerencias( $event )"></app-input>
 </div>
 
 <hr>
-<div class="alert alert-danger" *ngIf="error">
+<div class="alert alert-danger" *ngIf="error && termino.length > 0">
     No se encontró nada con el término {{ termino }}
 </div>
 
 <div class="row" *ngIf="results.length>0">
     <div class="col">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th>Bandera</th>
-                    <th>Capital</th>
-                    <th>Población</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of results">
-                    <td>{{ results.indexOf(item)+1 }}</td>
-                    <td>{{ item.name.common }}</td>
-                    <td class="small-flag">
-                        {{ item.flag }}
-                    </td>
-                    <td>{{ item.capital }}</td>
-                    <td>{{ item.population | number }}</td>
-                    <td>
-                        <a [routerLink]="['pais/', item.idd.root]" routerLinkActive="router-link-active" >Ver...</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <app-table [results]="results"></app-table>
     </div>
 </div>

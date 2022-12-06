@@ -1,1 +1,18 @@
-<p>por-region works!</p>
+<h2>Por Región</h2>
+<hr>
+
+<div class="row">
+    <app-input (onEnter) = "search( $event )"
+        (onDebounce)="sugerencias( $event )"></app-input>
+</div>
+
+<hr>
+<div class="alert alert-danger" *ngIf="error && termino.length > 0">
+    No se encontró nada con el término {{ termino }}
+</div>
+
+<div class="row" *ngIf="results.length>0">
+    <div class="col">
+        <app-table [results]="results"></app-table>
+    </div>
+</div>

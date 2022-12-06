@@ -1,0 +1,10 @@
+<div class="col">
+    <form autocomplete="off" (ngSubmit)="search() ">
+        <input type="text" 
+            name="termino" 
+            placeholder="Buscar País..." 
+            class="form-control"
+            [(ngModel)]="termino"
+            (input)="pressedKey()"/>
+    </form>
+</div>
