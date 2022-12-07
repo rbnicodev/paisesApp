@@ -1,3 +1,8 @@
+# Developer notes
+
+This project is a **practice** that aims to implement an API (restcountries.com) in a frontend app. **This project has not focused on design**, so the aesthetic is extremely sober.
+
+
 # PaisesApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
