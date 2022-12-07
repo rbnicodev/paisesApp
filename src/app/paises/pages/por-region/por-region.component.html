@@ -1,18 +1,26 @@
 <h2>Por Región</h2>
 <hr>
 
-<div class="row">
+
+<button 
+    [class]="getClassBtn( region.key )"
+    *ngFor="let region of regiones | keyvalue"
+    (click)="search( region.key )">
+    {{ region.value }}
+</button>
+
+<!-- <div class="row">
     <app-input (onEnter) = "search( $event )"
         (onDebounce)="sugerencias( $event )"
         placeholder="Buscar por región..."></app-input>
-</div>
+</div> -->
 
 <hr>
-<div class="alert alert-danger" *ngIf="error && termino.length > 0">
+<!-- <div class="alert alert-danger" *ngIf="error && termino.length > 0">
     No se encontró nada con el término {{ termino }}
-</div>
+</div> -->
 
-<div class="row" *ngIf="results.length>0">
+<div class="row" *ngIf="results.length > 0">
     <div class="col">
         <app-table [results]="results"></app-table>
     </div>

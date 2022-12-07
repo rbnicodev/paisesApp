@@ -9,31 +9,38 @@ import { PaisService } from '../../services/pais.service';
 })
 export class PorRegionComponent {
 
-  termino: string = "";
-  error: boolean = false;
+
+  regiones: Object = {
+    'europe':'Europa',
+    'americas':'America',
+    'africa':'África',
+    'asia':'Asia',
+    'oceania':'Australia'
+  }
+
+  regionActiva: string = '';
+
+  getClassBtn( region: string) {
+    return ( region === this.regionActiva ) 
+      ? 'btn btn-primary m-1'
+      : 'btn btn-outline-primary m-1';
+  }
+
   results: Country[] = [];
 
 
   constructor( private regionService: PaisService ) {}
 
 
-  search( termino: string ) {
-    this.termino = termino;
-    this.error = false;
+  search( region: string ) {
+    this.regionActiva = region;
 
-    this.regionService.searchRegion( this.termino ).subscribe({ next: (resp) => {
+    this.regionService.searchRegion( this.regionActiva ).subscribe({ next: (resp) => {
       console.log(resp);
       this.results = resp;
     }, error: (err) => {
-      this.error = true;
       this.results = [];
     }});
 
   }
-
-  sugerencias( termino: string ) {
-    this.error = false;
-    this.search( termino );
-  }
-
 }
