@@ -34,12 +34,22 @@
             </ul>
             <hr>
 
+
+            
+
+
+
+
+
             <h5>Idiomas oficiales</h5>
-            <ul class="list-group mr-1">
+            <mat-list role="list">
+                <mat-list-item role="listitem" *ngFor="let item of pais.languages | keyvalue">{{ item.value }}</mat-list-item>
+            </mat-list>
+            <!--<ul class="list-group mr-1">
                 <li class="list-group-item" *ngFor="let item of pais.languages | keyvalue">
                     {{ item.value }}
                 </li>
-            </ul>
+            </ul>-->
             <hr>
 
 
@@ -51,11 +61,17 @@
                     </span>
                 </div>
             </div>
-            <div class="row mt-3 card">
-                <pre class="m-5">
+            <hr>
+
+            <mat-card>
+                <mat-card-content><pre class="m-5">
                     {{ pais | json }}
-                </pre>
-            </div>
+                </pre></mat-card-content>
+            </mat-card>
+
+
+
+            
         </div>
         
     </div>

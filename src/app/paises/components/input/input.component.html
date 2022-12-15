@@ -1,4 +1,4 @@
-<div class="col">
+<div class="col"><!--
     <form autocomplete="off" (ngSubmit)="search() ">
         <input type="text" 
             name="termino" 
@@ -7,4 +7,14 @@
             [(ngModel)]="termino"
             (input)="pressedKey()"/>
     </form>
+
+-->
+
+    <mat-form-field class="example-form-field">
+        <mat-label>{{ placeholder }}</mat-label>
+        <input matInput name="termino" type="text" [(ngModel)]="termino" (input)="pressedKey()" class="form-control">
+        <button *ngIf="termino" matSuffix mat-icon-button aria-label="Clear" (click)="termino=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
 </div>
